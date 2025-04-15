@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="invoice">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="invoiceNumber" type="invoiceNumberType"/>
+        <xs:element name="invoiceDate" type="invoiceDateType"/>
+        
+        <xs:element name="seller">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="sellerBusinessName" type="businessNameType"/>
+              <xs:element name="address">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="streetNumber" type="streetNumberType"/>
+                    <xs:element name="city" type="xs:string"/>
+                    <xs:element name="postalCode" type="xs:string"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="mobileNumber" type="mobileNumberType"/>
+              <xs:element name="taxIdentificationNumber" type="taxIdType"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        
+        <xs:element name="buyer">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="buyerBusinessName" type="businessNameType"/>
+              <xs:element name="taxIdentificationNumber" type="taxIdType"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        
+        <xs:element name="items">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="item" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="description" type="itemDescriptionType"/>
+                    <xs:element name="quantity" type="quantityType"/>
+                    <xs:element name="unitPrice" type="priceType"/>
+                    <xs:element name="totalPrice" type="priceType"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+
+  <xs:simpleType name="invoiceNumberType">
+    <xs:restriction base="xs:string">
+      <xs:length value="10"/>
+      <xs:pattern value="[A-Za-z0-9]{10}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="invoiceDateType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/[0-9]{4}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="businessNameType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="20"/>
+      <xs:maxLength value="100"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="streetNumberType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{4}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="mobileNumberType">
+    <xs:restriction base="xs:string">
+      <xs:length value="10"/>
+      <xs:pattern value="(06|07|05)[0-9]{8}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="taxIdType">
+    <xs:restriction base="xs:string">
+      <xs:length value="15"/>
+      <xs:pattern value="[0-9]{15}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="itemDescriptionType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="15"/>
+      <xs:maxLength value="100"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="quantityType">
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="1"/>
+      <xs:maxInclusive value="999999"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="priceType">
+    <xs:restriction base="xs:decimal">
+      <xs:fractionDigits value="2"/>
+      <xs:totalDigits value="12"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<invoice xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="invoice.xsd">
+  <invoiceNumber>INV2023001</invoiceNumber>
+  <invoiceDate>15/06/2023</invoiceDate>
+  
+  <seller>
+    <sellerBusinessName>Mohi Eddine Matallah</sellerBusinessName>
+    <address>
+      <streetNumber>1234</streetNumber>
+      <city>Djamaa</city>
+      <postalCode>39004</postalCode>
+    </address>
+    <mobileNumber>0512345678</mobileNumber>
+    <taxIdentificationNumber>848883787878743</taxIdentificationNumber>
+  </seller>
+  
+  <buyer>
+    <buyerBusinessName>Siradj Eddine Matallah</buyerBusinessName>
+    <taxIdentificationNumber>987654321098765</taxIdentificationNumber>
+  </buyer>
+  
+  <items>
+    <item>
+      <description>Laptop Dell Latutide E6242 RAM 16gb ,SSD 512gb ,15,6-inch</description>
+      <quantity>5</quantity>
+      <unitPrice>499</unitPrice>
+      <totalPrice>2300.01</totalPrice>
+    </item>
+    <item>
+      <description>HyperX keyboard and mouse combo set</description>
+      <quantity>12</quantity>
+      <unitPrice>120</unitPrice>
+      <totalPrice>1400.99</totalPrice>
+    </item>
+    <item>
+      <description>27-inch monitor support 144hrz</description>
+      <quantity>3</quantity>
+      <unitPrice>3499.00</unitPrice>
+      <totalPrice>10497.00</totalPrice>
+    </item>
+  </items>
+</invoice>
